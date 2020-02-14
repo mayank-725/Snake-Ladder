@@ -6,7 +6,6 @@ echo "x                                                                     x"
 echo "x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x"
 
 counter=0
-
 for (( i = 10; i>0; i-- ))
 do
 echo "+------+------+------+------+------+------+------+------+------+------+"
@@ -38,4 +37,6 @@ done
 
 player1=0
 echo "player1's intial position is:$player1 th position"
-
+	
+diceRoll=$(((RANDOM%6)+1))
+echo "number appeared on Dice is :$diceRoll"
