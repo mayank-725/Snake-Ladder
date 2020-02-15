@@ -145,6 +145,6 @@ do
 	diceCounter=$((diceCounter+1))
 done
 echo "Number of times dice rolled is:$diceCounter"
-}
+
 checkOption
 
