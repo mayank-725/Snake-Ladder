@@ -15,25 +15,33 @@ echo -n "|"
 for (( j = 1; j < 11; j++ ))
 do
 
-if((counter>90))
-then
-	echo -n "   $(((i*10+1)-j))  |"
-# echo -n " "
-else	
-if((counter==0))
-then
-	# echo -n " "
-	echo -n " $(((i*10+1)-j))  |"
-else																										
-echo -n "  $(((i*10+1)-j))  |"
-fi
-fi
-counter=$((counter+1))
+	if((i%2==0))  
+	then
+			if((counter==0))
+			then
+				echo -n " $(((i*10+1)-j))  |"
+			else																										
+				echo -n "  $(((i*10+1)-j))  |"
+			fi
+	else	
+			if((counter>=90 && counter<99))
+			then
+     
+     				echo -n "   $(((i*10-10)+j))  |"
+    		elif((counter==99))
+    		then
+    				echo -n "  $(((i*10-10)+j))  |"
+			else
+				echo -n "  $(((i*10-10)+j))  |"
+			fi
+	fi
+	counter=$((counter+1))
 done
 echo ""
 echo "|      |      |      |      |      |      |      |      |      |      |"
 echo "+------+------+------+------+------+------+------+------+------+------+"
 done
+
 
 
 player1=0
