@@ -36,13 +36,15 @@ echo "+------+------+------+------+------+------+------+------+------+------+"
 done
 
 player1=0
+#get players current position
 playerCurrentPosition()
 {
+    
     value=$player1
-#echo "player1's intial position is:$player1 th position"
     return $value
 }
 
+#dice roll gives value of dice from 1-6
 diceValue()
 {
 diceRoll=$(((RANDOM%6)+1))
@@ -50,31 +52,39 @@ diceRoll=$(((RANDOM%6)+1))
     return $diceRoll
 }
 
+#checks condition for option to do after player turn
 checkOption()
 {
-result=$((RANDOM%3))
+while(($((player1))<=100))
+do
+	result=$((RANDOM%3))
 if((result==0))
 then
-echo "No play"
-echo "player1 is at position:$player1"
+	echo "Gameplay option condition:No play"
+	echo "player1 is at position:$player1"
 
 elif((result==1))
 then
-echo "Ladder"
-diceValue
-diceNumber=$?
-playerCurrentPosition
-position=$?
-player1=$((position+diceNumber))
-echo "player1 is at position:$player1"
+	echo "Gameplay option condition:Ladder"
+	diceValue
+	diceNumber=$?
+	playerCurrentPosition
+	position=$?
+	player1=$((position+diceNumber))
+	echo "player1 is at position:$player1"
 else
-echo "snake"
-diceValue
-diceNumber=$?
-playerCurrentPosition
-position=$?
-player1=$((position-diceNumber))
-echo "player1 is at position:$player1"
+	echo "Gameplay option condition:snake"
+	diceValue
+	diceNumber=$?
+	playerCurrentPosition
+	position=$?
+	player1=$((position-diceNumber))
+if(($((player1))<0))
+then
+	player1=0
+	echo "player1 is at position:$player1"
 fi
+fi
+done
 }
 checkOption
