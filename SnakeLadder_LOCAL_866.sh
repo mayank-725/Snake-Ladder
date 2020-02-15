@@ -46,41 +46,39 @@ playerCurrentPosition()
 #dice roll gives value of dice from 1-6
 diceValue()
 {
-	diceRoll=$(((RANDOM%6)+1))
+diceRoll=$(((RANDOM%6)+1))
     return $diceRoll
 }
 
-
-diceCounter=0
+#checks condition for option to do after player turn
 checkOption()
 {
 while((player1<100))
 do
-
 	result=$((RANDOM%3))
-	if((result==0))
-    then
-		echo "Gameplay option condition:No play"
-		echo "player1 is at position:$player1"	
+if((result==0))
+then
+	echo "Gameplay option condition:No play"
+	echo "player1 is at position:$player1"	
 
-	elif((result==1))
-	then
-		echo "Gameplay option condition:ladder"
-		diceValue
-		diceNumber=$?
-		echo "Dice Roll:$diceNumber"
-		playerCurrentPosition
-		position=$?
-		player1=$((position+diceNumber))
-		echo "player1 is at position:$player1"
-	else
-		echo "Gameplay option condition:snake"
+elif((result==1))
+then
+	echo "Gameplay option condition:ladder"
+	diceValue
+	diceNumber=$?
+	echo "Dice Roll:$diceNumber"
+	playerCurrentPosition
+	position=$?
+	player1=$((position+diceNumber))
+	echo "player1 is at position:$player1"
+else
+	echo "Gameplay option condition:snake"
 
-		diceValue
-		diceNumber=$?
-		playerCurrentPosition
-		position=$?
-		player1=$((position-diceNumber))
+	diceValue
+	diceNumber=$?
+	playerCurrentPosition
+	position=$?
+	player1=$((position-diceNumber))
     
 	 if((player1<0))
 	 then
@@ -97,8 +95,7 @@ fi
 	then
 		echo "Player1 won the game"
 	fi
-	diceCounter=$((diceCounter+1))
 done
-echo "Number of times dice rolled is:$diceCounter"
+
 }
 checkOption
