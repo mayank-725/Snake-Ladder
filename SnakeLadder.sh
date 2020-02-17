@@ -98,7 +98,6 @@ checkOption()
 			echo "Gameplay option condition:snake"
 			diceValue
 			diceNumber=$?
-			position=$?
 			player1=$((player1-diceNumber))
 			
 			if((player1<0))
@@ -112,7 +111,6 @@ checkOption()
 			echo "Gameplay option condition:snake"
 			diceValue
 			diceNumber=$?
-			position=$?
 			player2=$((player2-diceNumber))
 			if((player2<0))
 			then
@@ -125,7 +123,7 @@ checkOption()
     fi	
 }
 
-dicecounter=0
+diceCounter=0
 while((player1<100 && player2<100))
 do
 	if((diceCounter%2==0))
